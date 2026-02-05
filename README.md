@@ -23,3 +23,4 @@ This is a FastAPI backend deployed on **Hugging Face Spaces** using **Docker**.
 - `/health` – Health check
 - `/docs` – Swagger UI
 - `/redoc` – ReDoc
+# Trigger HF rebuild at Fri, Feb  6, 2026 12:25:38 AM
