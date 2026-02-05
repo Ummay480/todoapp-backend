@@ -11,7 +11,7 @@ from typing import Dict, Any, Optional, List
 from pydantic import BaseModel
 from openai import AsyncOpenAI
 import logging
-from src.services.rag_client import get_rag_client, RAGQueryResponse
+from ..services.rag_client import get_rag_client, RAGQueryResponse
 
 logger = logging.getLogger(__name__)
 

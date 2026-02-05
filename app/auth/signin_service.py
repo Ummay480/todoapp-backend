@@ -1,7 +1,7 @@
 from sqlmodel import select
-from src.models.user import User
-from src.auth.password_service import PasswordService
-from src.auth.jwt_service import JWTService
+from ..models.user import User
+from .password_service import PasswordService
+from .jwt_service import JWTService
 from sqlmodel import Session
 
 

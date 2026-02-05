@@ -2,10 +2,6 @@ from sqlmodel import Session, select, col
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
-# If models are in app/models/
-from app.models.task import Task, TaskCreate, TaskUpdate
-
-# Or if they're in the same directory level
 from ..models.task import Task, TaskCreate, TaskUpdate
 
 class TaskService:
