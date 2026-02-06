@@ -17,8 +17,6 @@ RUN apt-get update && apt-get install -y \
 # Copy application code
 COPY . .
 
-# Create src symlink for imports
-RUN ln -s /app/app /app/src
 
 # Expose port
 EXPOSE 7860

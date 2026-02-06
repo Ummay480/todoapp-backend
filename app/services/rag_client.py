@@ -32,7 +32,7 @@ class RAGClient:
     - Manage project-level data
     """
 
-    def __init__(self, base_url: str = "http://localhost:8000"):
+    def __init__(self, base_url: str = "http://localhost:7860"):
         """
         Initialize the RAG client.
 
@@ -195,6 +195,6 @@ def get_rag_client() -> RAGClient:
     if _rag_client is None:
         # Get base URL from environment or use default
         import os
-        rag_base_url = os.getenv("RAG_ENGINE_URL", "http://localhost:8000")
+        rag_base_url = os.getenv("RAG_ENGINE_URL", "http://localhost:7860")
         _rag_client = RAGClient(base_url=rag_base_url)
     return _rag_client

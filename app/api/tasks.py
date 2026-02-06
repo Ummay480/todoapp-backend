@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException, Path, Query
 from sqlmodel import Session
 from typing import List, Optional
 import uuid
-from ..database import get_session
+from app.database import get_session
 from app.models.task import Task, TaskCreate, TaskUpdate
-from ..services.task_service import TaskService
-from ..auth.jwt_handler import get_current_user
+from app.services.task_service import TaskService
+from app.auth.jwt_handler import get_current_user
 
 router = APIRouter(tags=["tasks"])
 

@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
-from ..database import get_session
-from ..auth.signup_service import signup_user
-from ..auth.signin_service import signin_user
+from app.database import get_session
+from app.auth.signup_service import signup_user
+from app.auth.signin_service import signin_user
 from sqlmodel import Session
 
 router = APIRouter(prefix="/auth", tags=["auth"])

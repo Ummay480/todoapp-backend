@@ -7,8 +7,8 @@ including chat interactions and RAG integration.
 
 from fastapi import APIRouter, Depends, HTTPException
 from typing import Dict, Any
-from ..ai_agents.chatbot import ChatRequest, ChatResponse, get_ai_chatbot
-from ..auth.jwt_handler import get_current_user
+from app.ai_agents.chatbot import ChatRequest, ChatResponse, get_ai_chatbot
+from app.auth.jwt_handler import get_current_user
 
 router = APIRouter(prefix="/chatbot", tags=["chatbot"])
 

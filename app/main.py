@@ -85,7 +85,7 @@ if os.getenv("ENVIRONMENT") != "production":
             return {"error": str(e)}
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 8000))
+    port = int(os.getenv("PORT", 7860))
     host = os.getenv("HOST", "0.0.0.0")
     reload = os.getenv("ENVIRONMENT") != "production"
     uvicorn.run("app.main:app", host=host, port=port, reload=reload)
