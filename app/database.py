@@ -13,10 +13,12 @@ load_dotenv()
 
 # Determine database URL based on environment
 ENVIRONMENT = os.getenv("ENVIRONMENT", "development")  # Default to development if not specified
+DATABASE_URL = ""
+
 if ENVIRONMENT == "production":
     # Production database configuration
     DATABASE_URL = os.getenv("DATABASE_URL", "")
-    if not DATABASE_URL or DATABASE_URL == "":
+    if not DATABASE_URL or DATABASE_URL.strip() == "":
         # If no DATABASE_URL is provided in production, fall back to SQLite
         # This is useful for demo purposes on platforms like Hugging Face Spaces
         DATABASE_URL = "sqlite:///./todo_app_hf.db"
