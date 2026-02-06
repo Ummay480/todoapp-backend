@@ -32,10 +32,13 @@ if ENVIRONMENT == "production":
         engine = create_engine(DATABASE_URL, echo=False, connect_args={"check_same_thread": False})
 else:
     # Development database configuration
-    DATABASE_URL = os.getenv(
-        "DATABASE_URL",
-        os.getenv("DEV_DATABASE_URL", "sqlite:///./todo_app.db")  # Use SQLite for local dev if no DEV_DATABASE_URL
-    )
+    temp_db_url = os.getenv("DATABASE_URL", "")
+    if not temp_db_url or temp_db_url.strip() == "":
+        # If DATABASE_URL is not set or is empty, try DEV_DATABASE_URL, then default to SQLite
+        temp_db_url = os.getenv("DEV_DATABASE_URL", "sqlite:///./todo_app.db")
+
+    DATABASE_URL = temp_db_url
+
     # Enable echo in development for debugging
     if DATABASE_URL.startswith("postgresql"):
         # For PostgreSQL, SQLAlchemy will automatically use psycopg2 if available
