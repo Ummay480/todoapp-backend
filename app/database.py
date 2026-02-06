@@ -12,14 +12,22 @@ logger = logging.getLogger(__name__)
 load_dotenv()
 
 # Determine database URL based on environment
-if os.getenv("ENVIRONMENT") == "production":
+ENVIRONMENT = os.getenv("ENVIRONMENT", "development")  # Default to development if not specified
+if ENVIRONMENT == "production":
     # Production database configuration
     DATABASE_URL = os.getenv("DATABASE_URL", "")
-    if not DATABASE_URL:
-        raise ValueError("DATABASE_URL environment variable is required in production")
+    if not DATABASE_URL or DATABASE_URL == "":
+        # If no DATABASE_URL is provided in production, fall back to SQLite
+        # This is useful for demo purposes on platforms like Hugging Face Spaces
+        DATABASE_URL = "sqlite:///./todo_app_hf.db"
+        logger.warning("No DATABASE_URL provided, falling back to SQLite for demo purposes")
 
-    # For production, we typically want to disable echo (SQL logging) for performance and security
-    engine = create_engine(DATABASE_URL, echo=False)
+    if DATABASE_URL.startswith("postgresql"):
+        # For PostgreSQL, SQLAlchemy will automatically use psycopg2 if available
+        engine = create_engine(DATABASE_URL, echo=False)
+    else:
+        # For SQLite, use the appropriate engine
+        engine = create_engine(DATABASE_URL, echo=False, connect_args={"check_same_thread": False})
 else:
     # Development database configuration
     DATABASE_URL = os.getenv(
