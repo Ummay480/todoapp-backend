@@ -3,7 +3,7 @@ from sqlmodel import Session
 from typing import List, Optional
 import uuid
 from ..database import get_session
-from ..models.task import Task, TaskCreate, TaskUpdate
+from app.models.task import Task, TaskCreate, TaskUpdate
 from ..services.task_service import TaskService
 from ..auth.jwt_handler import get_current_user
 

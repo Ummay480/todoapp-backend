@@ -2,7 +2,7 @@ from sqlmodel import Session, select, col
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
-from ..models.task import Task, TaskCreate, TaskUpdate
+from app.models.task import Task, TaskCreate, TaskUpdate
 
 class TaskService:
     @staticmethod

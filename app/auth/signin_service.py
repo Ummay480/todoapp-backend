@@ -1,5 +1,5 @@
 from sqlmodel import select
-from ..models.user import User
+from app.models.user import User
 from .password_service import PasswordService
 from .jwt_service import JWTService
 from sqlmodel import Session
