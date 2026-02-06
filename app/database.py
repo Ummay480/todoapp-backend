@@ -18,6 +18,14 @@ if not temp_db_url or temp_db_url.strip() == "":
 else:
     DATABASE_URL = temp_db_url
 
+# Validate the DATABASE_URL and fall back to SQLite if it's invalid
+try:
+    from sqlalchemy.engine import make_url
+    make_url(DATABASE_URL)
+except Exception as e:
+    logger.warning(f"Invalid DATABASE_URL '{DATABASE_URL}', falling back to SQLite: {e}")
+    DATABASE_URL = "sqlite:///./todo.db"
+
 # SQLite requires this argument; other DBs don't
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 
